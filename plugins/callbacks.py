@@ -1,5 +1,6 @@
 from pyrogram import Client as mrbots, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, Message
+
 
 ABOUT_TXT = """✮ 𝙼𝚈 𝙽𝙰𝙼𝙴: ᴍʀ. ʀᴇɴᴀᴍᴇʀ ᴜʟᴛʀᴏɴ
 ✮ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: 𝚉𝙸𝙽𝙰𝙽
@@ -44,7 +45,7 @@ async def cb_handler(client, query: CallbackQuery):
         )
     elif data == "about":
         await query.message.edit_text(
-            text=ABOUT_TXT.format(client.mention),
+            text=ABOUT_TXT.format,
             disable_web_page_preview = True,
             reply_markup=InlineKeyboardMarkup( [[
                InlineKeyboardButton("🔒 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
@@ -52,3 +53,5 @@ async def cb_handler(client, query: CallbackQuery):
                ]]
             )
         )
+    elif data == "close":
+        await query.message.delete()
