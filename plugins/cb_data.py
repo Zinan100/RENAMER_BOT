@@ -14,7 +14,7 @@ async def cancel(bot,update):
 		await update.message.delete()
 	except:
 		return
-@Client.on_callback_query(filters.regex('rename'))
+@Client.on_callback_query(filters.private & filters.command(rename))
 async def rename(bot,update):
 	user_id = update.message.chat.id
 	date = update.message.date
